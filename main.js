@@ -156,6 +156,7 @@ function isWinner(player1, player2) {
             index = 1
             setImageAction(playerTwoImg, 'papir')
             break;
+       
         
         case 'SCISSOR':
             index = 2
