@@ -43,19 +43,7 @@ function imageRoll(imageNode) {
 }
 
 function setImageAction(imageNode, action) {
-    switch (action) {
-        case 'ROCK':
-            
-            break;
-        case 'PAPIR':
-        
-            break;
-        case 'SCISOR':
-    
-       break;
-}
-    
-    imageNode.src = `actions/${randomImage}`
+    imageNode.src = `actions/${action.toLowerCase()}.svg`
 }
 
 function updateLabel() {
@@ -162,27 +150,32 @@ function isWinner(player1, player2) {
     switch (player2) {
         case 'ROCK':
             index = 0
+            setImageAction(playerTwoImg, 'rock')
             break;
         case 'PAPER':
             index = 1
+            setImageAction(playerTwoImg, 'papir')
             break;
     
         case 'SCISSOR':
             index = 2
+            setImageAction(playerTwoImg, 'scissor')
             break;
     }  
     
     switch (player1) {
         case 'ROCK':
             winner = winStaues(winTable[0][index])
-            
+            setImageAction(playerOneImg, 'rock')
             break;
         case 'PAPER':
             winner = winStaues(winTable[1][index])
+            setImageAction(playerOneImg, 'paper')
             break;
     
         case 'SCISSOR':
             winner = winStaues(winTable[2][index])
+            setImageAction(playerOneImg, 'scissor')
             break;
         
     }    
