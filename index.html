@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Lasse Aakjær">
+<link rel="stylesheet" href="style.css">
+<title>Rock - Paper - Scissor</title>
+
+</head>
+<body>
+    <div class="options">
+        <h1>ROCK - PAPER - SCISSOR</h1>
+        <p>Choose a player mode</p>
+    </div>
+
+    <div class="choose-player">
+        <div class="player" id="single">
+            <img src="https://d2uyrc6kc5il3l.cloudfront.net/~~/1522428612/img/role-playing/person.svg" alt="">
+            <h2>Single Player</h2>
+        </div>
+        <div class="player" id="multiplayer">
+            <img src="https://cdn1.iconfinder.com/data/icons/pixel-perfect-1/512/30-multiplayer-users-user-people-group-512.png" alt="">
+            <h2>Multiplayer</h2>
+        </div>
+    </div>
+  
+
+    <section class="gameboard">
+
+        <div class="player-one game">
+            <img src="cube.svg" alt="chooseing a action">
+            <label for=""></label>
+            <p>Q - Rock <br> W - PAPER <br> E - SCISSOR</p>
+        </div>
+        <div class="start">
+            <h3></h3>
+            <div>
+                <span id="first">0</span>
+                <p id="timer">5</p>
+                <span id="secound">0</span>
+            </div>
+            <button>Start</button>
+        </div>
+        <div class="player-two game">
+            <img src="cube.svg" alt="chooseing a action">
+            <label for=""></label>
+            <p>Left Arrow - Rock <br> Down Arrow - PAPER <br> Right Arrow - SCISSOR</p>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>

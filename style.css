@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #55b9f3;
+    
+    
+}
+
+.options {
+
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    text-align: center;
+}
+
+#player-selection {
+    height: 100vh;
+    background: orange;
+}
+
+.choose-player {
+    width: 40%;
+    min-width: 500px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    margin: 30vh auto 50vh auto;
+    
+ 
+}
+
+.player {
+    padding: 20px;
+    border-radius: 25px;
+    background: #55b9f3;
+    box-shadow:  12px 12px 16px #2f6686, 
+             -12px -12px 16px #7bffff;
+    transition: box-shadow .6s ease-in-out;
+}
+
+.choose-player h2 {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 2em;
+}
+
+/* FADE OUT */
+/* .player {
+    opacity: 1;
+    transition: opacity .6s ease-in-out;
+}
+.choose-player:hover {
+    box-shadow:  12px 12px 16px #54b7f1, 
+             -12px -12px 16px #56bbf5;
+}
+
+.choose-player:hover .player {
+    opacity: 0;
+} */
+
+
+.player {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+}
+
+
+.player:hover {
+    opacity: .7;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.gameboard {
+    width: 100%;
+    margin: 30vh auto;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.game {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+}
+
+.game label{
+    margin-top: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.game p{
+    margin-top: 20px;
+    font-size: 1.4em;
+}
+
+.start {
+    width: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 25px;
+    background: #55b9f3;
+    box-shadow:  12px 12px 16px #2f6686, 
+             -12px -12px 16px #7bffff;
+    transition: box-shadow .6s ease-in-out;
+}
+
+.start div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    
+}
+
+.start span {
+    width: 25px;
+    height: 25px;
+    font-size: 3em;
+}
+
+.start h3 {
+    font-size: 2.5em;
+    color: orangered;
+    text-shadow: 1px 1px black;
+}
+
+.start button {
+    max-width: 200px;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    padding: .4em 1em;
+    font-size: 32px;
+    border: none;
+    border-radius: 25px;
+    background: #55b9f3;
+    box-shadow:  12px 12px 16px #2f6686, 
+             -12px -12px 16px #7bffff;
+}
+
+.start button:hover {
+    box-shadow: inset 12px 12px 16px #2f6686, 
+            inset -12px -12px 16px #7bffff;
+    
+
+}
+
+#timer {
+    color: #0c30cd;
+    font-weight: bolder;
+    font-size: 2em;
+    text-shadow: 1px 1px black;
+}
+
+
