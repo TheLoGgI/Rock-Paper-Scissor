@@ -1,4 +1,5 @@
 {
+  
   "soruce": {
     "include": ["src"],
     "includePattern": ".js$",
@@ -9,8 +10,14 @@
     "cleaverLinks": true,
     "monospaceLinks": true
   },
-  "ops": {
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "private": true,
     "recurse": true,
-    "destination": "./docs/"
+    "template": "./node_modules/bookshelf-jsdoc-theme",
+    "whitelist": "['Optional', 'List', 'Of', 'Top', 'Level', 'Classes']",
+    "changelog": "./path-to/CHANGELOG.md",
+    "title": "Bookshelf.js"
   }
 }
