@@ -1,0 +1,23 @@
+{
+  
+  "soruce": {
+    "include": ["src"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleaverLinks": true,
+    "monospaceLinks": true
+  },
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+    "template": "./node_modules/bookshelf-jsdoc-theme",
+    "whitelist": "['Optional', 'List', 'Of', 'Top', 'Level', 'Classes']",
+    "changelog": "./path-to/CHANGELOG.md",
+    "title": "Bookshelf.js"
+  }
+}

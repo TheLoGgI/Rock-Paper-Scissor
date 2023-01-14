@@ -2,50 +2,99 @@
 /**
  * Single Player mode
  * True for single player, false for muliplayer
- * @type {boolean}
+ * @type {Boolean}
  */
 let isSingle
-let singlepick, secoundPick
+/**
+ * Player or players choosing action
+ * @type {String}
+ */
+let singlepick 
+/**
+ * Secound player choosing action
+ * @type {String}
+ */
+let secoundPick
+
+/**
+ * Determens when timer has reached 0
+ * @type {Boolean}
+ */
 let timerDone = false
+/**
+ * Player or players choosing action
+ * @type {Boolean}
+ */
 let gameOn = false
 
+/**
+ * Timer Element
+ * @type {HTMLElement}
+ */
 const timer = document.getElementById('timer')
+/**
+ * Player one Element
+ * @type {HTMLElement}
+ */
 const playerOne = document.querySelector(".player-one")
 const playerOneLabel = playerOne.children[1]
+/**
+ * Player one image element
+ * @type {HTMLImageElement}
+ * @property {object} defaults.src
+ */
+// @ts-ignore
 const playerOneImg = playerOne.children[0]
 
+/**
+ * Player Two Element or bot
+ * @type {HTMLElement}
+ */
 const playerTwo = document.querySelector(".player-two")
 const playerTwoLabel = playerTwo.children[1]
-const playerTwoImg = playerTwo.children[0]
+/**
+ * Player two image element
+ * @type {HTMLImageElement}
+ */
+// @ts-ignore
+const playerTwoImg = playerTwo.children[0] 
 
+/**
+ * Win label
+ * @type {HTMLElement}
+ */
 const winNote = document.querySelector('.start h3')
 const scorePlayerOne = document.getElementById('first')
 const scorePlayerTwo = document.getElementById('secound')
 
-// Choosing Multi or single player mode
-const choosePlayer = document.querySelector(".choose-player")
-choosePlayer.addEventListener('click', function(e) {
-    const choise = e.path[1].id 
 
-    if (choise === 'single'){
-        isSingle = true
-    } else {
-        isSingle = false
-    }
-    
-    choosePlayer.remove()
-})
 
+/**
+ * Timer Element
+ * Changes the image source of image node passed to the funtion
+ * @param {HTMLImageElement} imageNode - swiches random between rock, paper, scissor images
+ */
 function imageRoll(imageNode) {
     const actionsArray = ['rock.svg','paper.svg', 'scissor.svg']
     let randomImage = randomPick(actionsArray)
     imageNode.src = `actions/${randomImage}`
 }
 
+/**
+ * Timer Element
+ * Changes the image source of image node passed to the funtion
+ * @param {HTMLImageElement} imageNode - swiches random between rock, paper, scissor images
+ */
 function setImageAction(imageNode, action) {
     imageNode.src = `actions/${action.toLowerCase()}.svg`
 }
 
+/**
+ * Updates label
+ * Updates seleted action
+ * @function updateLabel
+ * @returns {void}
+ */
 function updateLabel() {
     if (singlepick) {
         playerOneLabel.innerHTML = singlepick
@@ -56,10 +105,30 @@ function updateLabel() {
     
 }
 
+
+/**
+ * Updates score label
+ * @function updateScore
+ * @returns {void}
+ */
 function updateScore(label) {
     label.innerHTML = Number(label.textContent) + 1
 }
 
+/**
+ * Player action state
+ * @typedef {Enumerator} playerState
+ * @property {String} 
+ * @param {*} winState 
+ */
+
+/**
+ * Win Label
+ * Updates or sets the win label, to show the winner of the match.
+ * @function updateWinLabel
+ * @param {String} winState
+ * @returns {void}
+ */
 function updateWinLabel(winState) {
     if (winState === 'WON') {
         winNote.innerHTML = 'Player 1 WON'
@@ -72,9 +141,13 @@ function updateWinLabel(winState) {
     }
     gameOn = false
 }
-
-
-function waitForCountDown() {
+/**
+ * Game loop
+ * Checks for multi- or singleplayer, executes game loop
+ * @function gameLoop
+ * @returns {void}
+ */
+function gameLoop() {
     let winner
     const choises = ['ROCK', 'PAPER', 'SCISSOR']
     if (timerDone) {
@@ -95,6 +168,13 @@ function waitForCountDown() {
     updateWinLabel(winner)
 }
 
+/**
+ * Count Down Timer
+ * @function countDown
+ * @param {Number} waitTime 
+ * @param {HTMLElement} timerElement 
+ * @returnes {void}
+ */
 function countDown(waitTime, timerElement){
        waitTime = waitTime - 1
 
@@ -104,6 +184,7 @@ function countDown(waitTime, timerElement){
         }, 300)
        
         const interval = setInterval(function() {
+            // @ts-ignore
             timerElement.innerHTML = Number(waitTime--)
             
             
@@ -115,7 +196,7 @@ function countDown(waitTime, timerElement){
 
             if (waitTime === -1) {
                 timerDone = true
-                waitForCountDown()
+                gameLoop()
             }
             
         }, 1000)
@@ -123,11 +204,7 @@ function countDown(waitTime, timerElement){
 }
 
 
-// When clicking start
-document.querySelector('.start button').addEventListener('click', async e => {
-    gameOn = true
-    countDown(5,timer)
-})
+
 
 
 function randomPick(array) {
@@ -143,6 +220,11 @@ function isWinner(player1, player2) {
     | Paper    |  -1   |   0   |    1   |
     | Scissors |   1   |  -1   |    0   |
     +----------+-------+-------+--------+ */
+
+    /**
+     * Win table
+     * @type {Array|Array|number}
+     */
     const winTable = [[0,-1,1], [1,0,-1], [-1,1,0]]
     let winner
     let index = 0
@@ -154,7 +236,7 @@ function isWinner(player1, player2) {
             break;
         case 'PAPER':
             index = 1
-            setImageAction(playerTwoImg, 'papir')
+            setImageAction(playerTwoImg, 'paper')
             break;
        
         
@@ -166,16 +248,16 @@ function isWinner(player1, player2) {
     
     switch (player1) {
         case 'ROCK':
-            winner = winStaues(winTable[0][index])
+            winner = winStatus(winTable[0][index])
             setImageAction(playerOneImg, 'rock')
             break;
         case 'PAPER':
-            winner = winStaues(winTable[1][index])
+            winner = winStatus(winTable[1][index])
             setImageAction(playerOneImg, 'paper')
             break;
     
         case 'SCISSOR':
-            winner = winStaues(winTable[2][index])
+            winner = winStatus(winTable[2][index])
             setImageAction(playerOneImg, 'scissor')
             break;
         
@@ -185,10 +267,15 @@ function isWinner(player1, player2) {
     return winner
 }
 
-
-function winStaues(winStaus) {
-    if (winStaus == 0) return 'TIE'
-        else if (winStaus == 1) return 'WON'
+/**
+ * Win status
+ * @function winStatues
+ * @param {Number} winState - index for win(1), lose(-1) or tie(0) 
+ * @returns Status of index converted to text WON, LOST, TIE
+ */
+function winStatus(winState) {
+    if (winState == 0) return 'TIE'
+        else if (winState == 1) return 'WON'
         else return 'LOST'
 }
 
@@ -227,6 +314,40 @@ document.addEventListener('keydown', function (event) {
     updateLabel()
     
     
+})
+
+
+// Choosing Multi or single player mode
+
+/**
+ * Player option to one or two players
+ * @type {HTMLElement}
+ */
+const choosePlayer = document.querySelector(".choose-player")
+
+/**
+ * Settings function
+ * @event .choose-player#click
+ * @listens click
+ * @callback When choosing a player mode (multi or single) choise is set isSingle set to true or false
+ * @property {event} e - event object from click event
+ */
+choosePlayer.addEventListener('click', function(e) {
+    const choise = e.path[1].id 
+    
+    if (choise === 'single'){
+        isSingle = true
+    } else {
+        isSingle = false
+    }
+    
+    choosePlayer.remove()
+})
+
+// When clicking start
+document.querySelector('.start button').addEventListener('click', async e => {
+    gameOn = true
+    countDown(5,timer)
 })
 
 
